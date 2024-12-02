@@ -13,6 +13,7 @@ Parser::Parser(const std::string &filename) {
 	return;
   }
   _parseData(file);
+  file.close();
 }
 
 std::vector< std::vector<int> > Parser::getData() const {

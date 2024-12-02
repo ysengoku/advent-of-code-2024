@@ -12,7 +12,7 @@
 int main(int ac, char **av) {
   if (ac != 2) {
     std::cerr << "usage: " << av[0] << " file" << std::endl;
-	return (1);
+	  return (1);
   }
   std::vector< std::vector<int> > data = Parser(av[1]).getData();
   
