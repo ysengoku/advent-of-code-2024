@@ -2,18 +2,18 @@ NAME = advent2024
 CXX = g++
 
 vpath %.cpp srcs
-FILES = main Parser SafeChecker
+FILES = main Parser
 SRCS = $(addsuffix .cpp, $(FILES))
 
 INCLUDE = includes/
-HEADER_FILEES = Parser SafeChecker
+HEADER_FILEES = Parser
 HEADERS = $(addprefix $(INCLUDE), $(addsuffix .hpp, $(HEADER_FILES)))
 
 OBJS_DIR = .objs/
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 DEPS = $(OBJS:.o=.d)
 
-CPPFLAGS = -Wall -Wextra -Werror -I$(INCLUDE)
+CPPFLAGS = -Wall -Wextra -Werror -std=c++17 -I$(INCLUDE)
 
 all: $(NAME)
 
