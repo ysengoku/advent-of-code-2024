@@ -9,13 +9,16 @@
 
 class Parser {
  public:
-  explicit Parser(std::string const &filename);
+  explicit Parser(std::string const &filename, int partNo);
   std::vector<std::pair<int, int> > getData() const;
 
  private:
   std::vector<std::pair<int, int> > _data;
+  int _partNo;
+  // bool _do;
 
-  void _parseData(std::ifstream &file);
+  void _parseDataPart1(std::ifstream &file);
+  void _parseDataPart2(std::ifstream &file);
 };
 
 #endif  // DAY3_INCLUDES_PARSER_HPP_
