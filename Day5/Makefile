@@ -1,25 +1,12 @@
-day="4"
-star=$'\e[5;33m*\e[0m\e[1;32m
-o=$'\e[0m\e[1;31mo\e[0m\e[1;32m
-
-white=$'\e[0;37m
-red=$'\e[1;31m
-green=$'\e[1;32m
-yellow=$'\e[1;33m
-dark_green=$'\033[38;5;58m
-magenta=$'\033[38;5;125m
-bg_magenta=$'\033[48;5;125m
-reset=$'\e[0m
-
 NAME = advent2024
 CXX = g++
 
 vpath %.cpp srcs
-FILES = main Parser OccurrencesCounter
+FILES = main Parser OrderChecker utils
 SRCS = $(addsuffix .cpp, $(FILES))
 
 INCLUDE = includes/
-HEADER_FILES = Parser OccurrencesCounter
+HEADER_FILES = Parser OrderChecker utils
 HEADERS = $(addprefix $(INCLUDE), $(addsuffix .hpp, $(HEADER_FILES)))
 
 OBJS_DIR = .objs/
@@ -37,7 +24,7 @@ $(NAME): $(OBJS)
 	@printf "      ${green}/.\\\\\n"
 	@printf "     ${green}/${o}..\\ ${white}\n"
 	@printf "     ${green}/..${o}\\ ${white}    ${bg_magenta} Advent of Code 2024 ${reset}\n"
-	@printf "    ${green}/.${o}..${o}\\ ${white}        ${magenta} Day ${day}${reset}           ${red}_🟥_   ❄️\n"
+	@printf "    ${green}/.${o}..${o}\\ ${white}         ${magenta} Day ${day}${reset}          ${red}_🟥_   ❄️\n"
 	@printf "    ${green}/...${o}.\\ ${white}                         ${white}(.˛.) ${yellow}y${reset}\n"
 	@printf "   ${green}/..${o}....\\ ${white}                       ${white}\\( : )/${reset}\n"
 	@printf "   ${green}^^^| |^^^   ${white}                     ${white}(     )${reset}\n"
@@ -57,5 +44,18 @@ fclean: clean
 
 re: fclean
 	$(MAKE) all
+
+day="5"
+star=$'\e[5;33m*\e[0m\e[1;32m
+o=$'\e[0m\e[1;31mo\e[0m\e[1;32m
+
+white=$'\e[0;37m
+red=$'\e[1;31m
+green=$'\e[1;32m
+yellow=$'\e[1;33m
+dark_green=$'\033[38;5;58m
+magenta=$'\033[38;5;125m
+bg_magenta=$'\033[48;5;125m
+reset=$'\e[0m
 
 .PHONY: all clean fclean re

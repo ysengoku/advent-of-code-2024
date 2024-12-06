@@ -19,6 +19,17 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CPPFLAGS) $^ -o $@
+	@printf "\n       ${star}\\n"
+	@printf "       Λ\\n"
+	@printf "      ${green}/.\\\\\n"
+	@printf "     ${green}/${o}..\\ ${white}\n"
+	@printf "     ${green}/..${o}\\ ${white}    ${bg_magenta} Advent of Code 2024 ${reset}\n"
+	@printf "    ${green}/.${o}..${o}\\ ${white}        ${magenta} Day ${day}${reset}           ${red}_🟥_   ❄️\n"
+	@printf "    ${green}/...${o}.\\ ${white}                         ${white}(.˛.) ${yellow}y${reset}\n"
+	@printf "   ${green}/..${o}....\\ ${white}                       ${white}\\( : )/${reset}\n"
+	@printf "   ${green}^^^| |^^^   ${white}                     ${white}(     )${reset}\n"
+	@printf "${dark_green}───────────────────────────────────────────────${reset}\n"
+
 
 $(OBJS_DIR)%.o: %.cpp Makefile
 	@mkdir -p $(OBJS_DIR)
@@ -34,5 +45,18 @@ fclean: clean
 
 re: fclean
 	$(MAKE) all
+
+day="3"
+star=$'\e[5;33m*\e[0m\e[1;32m
+o=$'\e[0m\e[1;31mo\e[0m\e[1;32m
+
+white=$'\e[0;37m
+red=$'\e[1;31m
+green=$'\e[1;32m
+yellow=$'\e[1;33m
+dark_green=$'\033[38;5;58m
+magenta=$'\033[38;5;125m
+bg_magenta=$'\033[48;5;125m
+reset=$'\e[0m
 
 .PHONY: all clean fclean re
