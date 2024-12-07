@@ -15,11 +15,11 @@ NAME = advent2024
 CXX = g++
 
 vpath %.cpp srcs
-FILES = main Parser OccurrencesCounter
+FILES = main Parser OccurrencesCounter XmasCounter
 SRCS = $(addsuffix .cpp, $(FILES))
 
 INCLUDE = includes/
-HEADER_FILES = Parser OccurrencesCounter
+HEADER_FILES = Parser OccurrencesCounter XmasCounter
 HEADERS = $(addprefix $(INCLUDE), $(addsuffix .hpp, $(HEADER_FILES)))
 
 OBJS_DIR = .objs/

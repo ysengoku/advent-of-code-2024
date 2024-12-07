@@ -6,15 +6,19 @@
 
 #include "../includes/OccurrencesCounter.hpp"
 #include "../includes/Parser.hpp"
+#include "../includes/XmasCounter.hpp"
 
 int main(int ac, char **av) {
   if (ac != 2) {
-    std::cerr << "usage: " << av[0] << " <path to file>"  << std::endl;
+    std::cerr << "usage: " << av[0] << " <path to file>" << std::endl;
     return (1);
   }
   std::vector<std::string> data = Parser(av[1]).getData();
-  int result = OccurrencesCounter(data, "XMAS").getCount();
-  std::cout << "Result: " << result << std::endl;
+  int result1 = OccurrencesCounter(data, "XMAS").getCount();
+  std::cout << "Part1 Result: " << result1 << std::endl;
+
+  int result2 = XmasCounter(data).getCount();
+  std::cout << "Part2 Result: " << result2 << std::endl;
 
   return (0);
 }
@@ -66,3 +70,34 @@ int main(int ac, char **av) {
 // ..M.M.M.MM
 // .X.X.XMASX
 // Take a look at the little Elf's word search. How many times does XMAS appear?
+
+// --- Part Two ---
+// The Elf looks quizzically at you. Did you misunderstand the assignment?
+
+// Looking for the instructions, you flip over the word search to find that this
+// isn't actually an XMAS puzzle; it's an X-MAS puzzle in which you're supposed
+// to find two MAS in the shape of an X. One way to achieve that is like this:
+
+// M.S
+// .A.
+// M.S
+// Irrelevant characters have again been replaced with . in the above diagram.
+// Within the X, each MAS can be written forwards or backwards.
+
+// Here's the same example from before, but this time all of the X-MASes have
+// been kept instead:
+
+// .M.S......
+// ..A..MSMS.
+// .M.S.MAA..
+// ..A.ASMSM.
+// .M.S.M....
+// ..........
+// S.S.S.S.S.
+// .A.A.A.A..
+// M.M.M.M.M.
+// ..........
+// In this example, an X-MAS appears 9 times.
+
+// Flip the word search from the instructions back over to the word search side
+// and try again. How many times does an X-MAS appear?

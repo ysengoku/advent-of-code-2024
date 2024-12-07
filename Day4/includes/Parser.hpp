@@ -4,6 +4,7 @@
 #define DAY4_INCLUDES_PARSER_HPP_
 
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -19,5 +20,12 @@ class Parser {
 
   stringVector _data;
 };
+
+template <typename T>
+void printVector(const std::vector<T> &vec) {
+  for (const auto &elem : vec) {
+    std::cout << elem << std::endl;
+  }
+}
 
 #endif  // DAY4_INCLUDES_PARSER_HPP_
