@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../includes/OrderChecker.hpp"
+#include "../includes/OrderCorrector.hpp"
 #include "../includes/Parser.hpp"
 
 int main(int ac, char **av) {
@@ -18,6 +19,9 @@ int main(int ac, char **av) {
 
   OrderChecker orderChecker(rulesData, updatesData);
   orderChecker.printSumOfMiddlePageNumbers();
+
+  OrderCorrector orderCorrector(rulesData, orderChecker.getIncorrectlyOrderedUpdates());
+  orderCorrector.printSumOfMiddlePageNumbers();
 
   return (0);
 }

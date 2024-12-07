@@ -2,18 +2,18 @@ NAME = advent2024
 CXX = g++
 
 vpath %.cpp srcs
-FILES = main Parser OrderChecker utils
+FILES = main Parser OrderChecker OrderCorrector utils
 SRCS = $(addsuffix .cpp, $(FILES))
 
 INCLUDE = includes/
-HEADER_FILES = Parser OrderChecker utils
+HEADER_FILES = Parser OrderChecker OrderCorrector utils
 HEADERS = $(addprefix $(INCLUDE), $(addsuffix .hpp, $(HEADER_FILES)))
 
 OBJS_DIR = .objs/
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 DEPS = $(OBJS:.o=.d)
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++17 -I$(INCLUDE)
+CPPFLAGS = -Wall -Wextra -Werror -std=c++17 -I$(INCLUDE) -fsanitize=address
 
 all: $(NAME)
 

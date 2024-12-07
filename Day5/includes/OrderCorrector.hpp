@@ -19,7 +19,7 @@ class OrderCorrector {
   std::vector< std::vector<int> > _correctedUpdates;
 
   void _correctOrder(void);
-  std::vector<int> _putUpdateInOrder(const std::vector<int> &update);
+  std::vector<int> _putInCorrectOrder(const std::vector<int> &update);
 };
 
 #endif // DAY5_INCLUDES_ORDERSETTER_HPP_

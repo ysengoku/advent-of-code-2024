@@ -19,6 +19,10 @@ std::vector< std::vector<int> > OrderChecker::getCorrectlyOrderedUpdates(void) c
   return (_correctlyOrderedUpdates);
 }
 
+std::vector< std::vector<int> > OrderChecker::getIncorrectlyOrderedUpdates(void) const {
+  return (_incorrectlyOrderedUpdates);
+}
+
 void OrderChecker::_extractCorrectlyOrderedUpdates(void) {
   std::vector<std::vector<int>>::iterator itEnd = _updatesData.end();
   for (std::vector<std::vector<int>>::iterator it = _updatesData.begin();
@@ -30,8 +34,8 @@ void OrderChecker::_extractCorrectlyOrderedUpdates(void) {
   }
 //   std::cout << "Correctly ordered updates: " << std::endl;
 //   printVectorVectorInt(_correctlyOrderedUpdates);
-  std::cout << std::endl << "Incorrectly ordered updates: " << std::endl;
-  printVectorVectorInt(_incorrectlyOrderedUpdates);
+  // std::cout << std::endl << "Incorrectly ordered updates: " << std::endl;
+  // printVectorVectorInt(_incorrectlyOrderedUpdates);
 }
 
 bool OrderChecker::_isCorrectlyOrdered(std::vector<int> const &update) {

@@ -14,6 +14,7 @@ class OrderChecker {
 
   void printSumOfMiddlePageNumbers(void);
   std::vector< std::vector<int> > getCorrectlyOrderedUpdates(void) const;
+  std::vector< std::vector<int> > getIncorrectlyOrderedUpdates(void) const;
 
  private:
   std::vector<std::pair<int, int> > _rulesData;
