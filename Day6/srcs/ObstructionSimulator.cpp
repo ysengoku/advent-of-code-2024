@@ -82,6 +82,7 @@ void ObstructionSimulator::_checkCandidate(const Vector2D &candidate) {
     nextPos.y += _direction.y;
     if (nextPos.y >= _mapHeight || nextPos.y < 0 || nextPos.x >= _mapWidth ||
         nextPos.x < 0) {
+	  std::cout << "Out of bounds! " << nextPos.y << ", " << nextPos.x << std::endl;
       return;
     } else if (_initialMap[nextPos.y][nextPos.x] == '#') {
 	  _turnRight();
