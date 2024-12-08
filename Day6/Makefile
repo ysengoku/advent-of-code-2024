@@ -2,11 +2,11 @@ NAME = advent2024
 CXX = g++
 
 vpath %.cpp srcs
-FILES = main Parser Guard
+FILES = main Parser Guard ObstructionSimulator utils
 SRCS = $(addsuffix .cpp, $(FILES))
 
 INCLUDE = includes/
-HEADER_FILES = Parser Guard utils
+HEADER_FILES = Parser Guard ObstructionSimulator utils
 HEADERS = $(addprefix $(INCLUDE), $(addsuffix .hpp, $(HEADER_FILES)))
 
 OBJS_DIR = .objs/

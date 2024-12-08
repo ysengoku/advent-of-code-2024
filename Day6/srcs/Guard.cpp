@@ -10,11 +10,11 @@
 Guard::Guard(const std::vector<std::string> &map) : _map(map) { _initialize(); }
 
 void Guard::patrol(void) {
-  while (_y < _mapHeight && _y >= 0 && _x < _mapWidth && _x >= 0) {
-	// std::cout << "Current position: (" << _x << ", " << _y << ", " << _map[_y][_x] << ")"
+  while (_position.y < _mapHeight && _position.y >= 0 && _position.x < _mapWidth && _position.x >= 0) {
+	// std::cout << "Current position: (" << _position.x << ", " << _position.y << ", " << _map[_position.y][_position.x] << ")"
 	// 		  << " Direction: (" << _direction.x << ", " << _direction.y
 	// 		  << ")" << std::endl;
-	if (_map[_y + _direction.y][_x + _direction.x] == '#') {
+	if (_map[_position.y + _direction.y][_position.x + _direction.x] == '#') {
 	  _turnRight();
 	} else {
 	  _move();
@@ -23,14 +23,17 @@ void Guard::patrol(void) {
   _printVisitedPositionsCount();
 }
 
+const std::vector<std::string> Guard::getMap(void) const { return (_map); }
+
 void Guard::_initialize(void) {
   _mapWidth = _map[0].size();
   _mapHeight = _map.size();
   for (int y = 0; y < _mapHeight; ++y) {
     for (int x = 0; x < _mapWidth; ++x) {
       if (_map[y][x] != '.' && _map[y][x] != '#') {
-        _x = x;
-        _y = y;
+        _position.x = x;
+        _position.y = y;
+		_initialPosition = _position;
         if (_map[y][x] == '^')
           _direction = {0, -1};
         else if (_map[y][x] == 'v')
@@ -39,8 +42,9 @@ void Guard::_initialize(void) {
           _direction = {-1, 0};
         else if (_map[y][x] == '>')
           _direction = {1, 0};
-		_map[_y][_x] = 'X';
-        // std::cout << "Initial position: (" << _x << ", " << _y << ")"
+		_initialDirection = _direction;
+		_map[_position.y][_position.x] = 'X';
+        // std::cout << "Initial position: (" << _position.x << ", " << _position.y << ")"
         //           << " Direction: (" << _direction.x << ", " << _direction.y
         //           << ")" << std::endl;
         return;
@@ -50,9 +54,9 @@ void Guard::_initialize(void) {
 }
 
 void Guard::_move(void) {
-  _map[_y][_x] = 'X';
-  _x += _direction.x;
-  _y += _direction.y;
+  _position.x += _direction.x;
+  _position.y += _direction.y;
+  _map[_position.y][_position.x] = 'X';
 }
 
 void Guard::_turnRight(void) {

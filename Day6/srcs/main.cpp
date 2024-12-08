@@ -5,7 +5,9 @@
 #include <vector>
 
 #include "../includes/Guard.hpp"
+#include "../includes/ObstructionSimulator.hpp"
 #include "../includes/Parser.hpp"
+#include "../includes/utils.hpp"
 
 int main(int ac, char **av) {
   if (ac != 2) {
@@ -13,7 +15,14 @@ int main(int ac, char **av) {
     return (1);
   }
   std::vector<std::string> map = Parser(av[1]).getMap();
-  Guard(map).patrol();
+  Guard guard(map);
+  guard.patrol();
+
+  std::cout << "----- Part 2 -----" << std::endl;
+//   printVector(map);
+//   printVector(guard.getMap());
+  ObstructionSimulator simulator(guard, map);
+  simulator.simulate();
   return (0);
 }
 
