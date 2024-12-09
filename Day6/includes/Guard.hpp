@@ -14,6 +14,14 @@ struct Vector2D {
   bool operator==(const Vector2D &other) const {
     return (x == other.x && y == other.y);
   }
+
+// Dummy definition
+  bool operator>(const Vector2D &other) const {
+    return (y > other.y || (y == other.y && x > other.x));
+  }
+  bool operator<(const Vector2D &other) const {
+    return (y < other.y || (y == other.y && x < other.x));
+  }
 };
 
 class Guard {
